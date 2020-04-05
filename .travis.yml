@@ -1,0 +1,12 @@
+branches:
+ only:
+  - master
+  - /^develop.*$/
+dist: bionic
+
+services:
+  - docker
+
+script:
+  - docker run -t -v $PWD:/<TEMPLATE> dirack/<IMAGEM>:<TAG> bash -c 'CWPROOT=$HOME && PATH=$PATH:$CWPROOT/bin && make test'
+
